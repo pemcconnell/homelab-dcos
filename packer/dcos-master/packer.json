@@ -1,0 +1,26 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "iso_url": "https://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso",
+      "iso_checksum": "0da9440525e04baa73b36fba46909b13",
+      "iso_checksum_type": "md5",
+      "remote_host": "{{ user `remote_host` }}",
+      "remote_datastore": "{{ user `remote_datastore` }}",
+      "remote_username": "{{ user `remote_username` }}",
+      "remote_password": "{{ user `remote_password` }}",
+      "remote_type": "esx5",
+      "ssh_username": "{{ user `remote_username` }}",
+      "ssh_password": "{{ user `remote_password` }}",
+      "ssh_wait_timeout": "60m",
+      "vmdk_name": "dcos-master"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "files/cloud-config.yml",
+      "destination": "cloud-config.yml"
+    }
+  ]
+}
