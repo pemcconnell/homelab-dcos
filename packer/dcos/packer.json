@@ -14,7 +14,13 @@
       "ssh_password": "{{ user `remote_password` }}",
       "ssh_wait_timeout": "60m",
       "vmdk_name": "dcos",
-      "shutdown_command": "shutdown -P now"
+      "shutdown_command": "shutdown -P now",
+      "output_directory": "dcos",
+      "headless": "true",
+      "vnc_disable_password": "true",
+      "vnc_port_min": "5900",
+	  "vnc_port_max": "5911",
+	  "vnc_bind_address": "0.0.0.0"
     }
   ],
   "provisioners": [
