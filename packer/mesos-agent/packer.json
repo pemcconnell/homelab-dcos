@@ -13,7 +13,8 @@
       "ssh_username": "{{ user `remote_username` }}",
       "ssh_password": "{{ user `remote_password` }}",
       "ssh_wait_timeout": "60m",
-      "vmdk_name": "dcos-master"
+      "vmdk_name": "mesos-agent",
+      "shutdown_command": "shutdown -P now"
     }
   ],
   "provisioners": [

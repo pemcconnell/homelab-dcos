@@ -1,16 +1,32 @@
 # homelab-dcos
-super simple dcos cluster for messing around with on my home lab
+super-simple dcos cluster for messing around with on my homelab. specifically, this has been designed to run against some dell r710's running esxi 6.5.
+
+**this isn't at all designed for production use**
 
 ## requirements
 
-- terraform
+- terraform 0.9.11+
+- packer 1.0.2+
+- vsphere 6.5+
 
-## envs
+## terraform
 
-Set the following vars prior to executing the terraform command:
+### envs
+
+Store the following in your `terraform.tfvars` and update accordingly.
 
 ```bash
-export TF_VAR_vsphere_user=foo
-export TF_VAR_vsphere_password=bar
-export TF_VAR_vsphere_server=foobar
+vsphere_vcenter    = "192.168.1.300"
+vsphere_user       = "user"
+vsphere_password   = "password"
+vsphere_datacenter = "mydc"
+vsphere_cluster    = "my-cluster"
+```
+
+## packer
+
+`cd` into the `./packer` directory and choose which image you would like to build. Each folder should have a `./build.sh` file for convenience. It's advised that you create a `.env` file in the `./packer` folder so that you can run the following command prior to `./build.sh`:
+
+```shell
+export $(cat ../.env)
 ```
