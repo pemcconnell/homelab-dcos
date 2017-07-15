@@ -23,12 +23,12 @@ set -o nounset -o errexit -o pipefail
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   exit 2
+elif [ "$1" = "docker" ]; then
+  echo 1>&2 "$0: Docker is not currently supported for this build."
+  exit 2
 elif [ "$1" != "vmware-iso" ]; then
   echo 1>&2 "$0: The first argument must be vmware-iso."
   echo 1>&2 "$0: e.g. ./build.sh docker"
-  exit 2
-elif [ "$1" != "docker" ]; then
-  echo 1>&2 "$0: Docker is not currently supported for this build."
   exit 2
 fi
 
