@@ -2,8 +2,8 @@
   "builders": [
     {
       "type": "vmware-iso",
-      "iso_url": "https://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso",
-      "iso_checksum": "0da9440525e04baa73b36fba46909b13",
+      "iso_url": "{{ user `iso_url` }}",
+      "iso_checksum": "{{ user `iso_md5_checksum` }}",
       "iso_checksum_type": "md5",
       "remote_host": "{{ user `remote_host` }}",
       "remote_datastore": "{{ user `remote_datastore` }}",
@@ -14,7 +14,13 @@
       "ssh_password": "{{ user `remote_password` }}",
       "ssh_wait_timeout": "60m",
       "vmdk_name": "mesos-master",
-      "shutdown_command": "shutdown -P now"
+      "shutdown_command": "shutdown -P now",
+      "output_directory": "mesos-agent",
+      "headless": "true",
+      "vnc_disable_password": "true",
+      "vnc_port_min": "5900",
+      "vnc_port_max": "5911",
+      "vnc_bind_address": "0.0.0.0"
     }
   ],
   "provisioners": [

@@ -11,7 +11,7 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Peter McConnell (me@petermcconnell.com), 
+#        AUTHOR: Peter McConnell (me@petermcconnell.com)
 #  ORGANIZATION: 
 #       CREATED: 14/07/2017 21:03
 #      REVISION:  ---
@@ -19,6 +19,7 @@
 
 
 set -o nounset -o errexit -o pipefail
+
 export PATH=/sbin:/usr/sbin:/bin:/usr/bin:$PATH
 MASTER_IP=$(dig +short master.mesos || true)
 MASTER_IP=${MASTER_IP:-${master_ip}}

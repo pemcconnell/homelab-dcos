@@ -18,14 +18,9 @@
 #      REVISION:  ---
 #===============================================================================
 
-set -e
-set -o nounset                              # Treat unset variables as an error
-
+set -o nounset -o errexit -o pipefail
 
 cd /etc/genconf
-
-# download installer
-curl -O https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
 
 # generate config
 bash dcos_generate_config.sh

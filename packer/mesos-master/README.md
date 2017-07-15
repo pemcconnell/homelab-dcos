@@ -1,18 +1,44 @@
-# dcos master image
-This image is designed specifically with a homelab esxi cluster in mind and **not** a production image.
+# dcos master image (vsphere - coreos)
+
+This image is designed specifically with a homelab in mind and should **not**
+be considered as a production image.
+
+## iso
+
+The ISO and it's checksum are defined in `./build.sh`:
+
+```bash
+...
+-var "iso_url=https://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso" \
+-var "iso_md5_checksum=0da9440525e04baa73b36fba46909b13" \
+...
+```
 
 ## variables
 
+Assuming you have the following vars set up in the root of this repo:
+
 ```bash
-export AUTHORIZED_KEYS=foo
-export REMOTE_HOST=1.2.3.4
-export REMOTE_USER=bar
-export REMOTE_PASSWORD=foobar
-export REMOTE_DATASTORE=datastore9
+author=foo@bar.com
+vsphere_vcenter=192.168.1.300
+vsphere_user=user
+vsphere_password=password
+vsphere_datacenter=mydc
+vsphere_cluster=my-cluster
+vsphere_datastore=datastore1
+vsphere_authorizedkeys="ssh-rsa ABCDEF0... foo"
 ```
 
-## run
+You can load them into your env by running:
 
 ```bash
-./build.sh
+export "$(cat ../../terraform.tfvars)"
+```
+
+## build
+
+A convenience script has been added for build. Simply run:
+
+```bash
+./build.sh vmware-iso
 ```
