@@ -28,7 +28,7 @@ elif [ "$1" = "docker" ]; then
   exit 2
 elif [ "$1" != "vmware-iso" ]; then
   echo 1>&2 "$0: The first argument must be vmware-iso."
-  echo 1>&2 "$0: e.g. ./build.sh docker"
+  echo 1>&2 "$0: e.g. ./build.sh vmware-iso"
   exit 2
 fi
 
