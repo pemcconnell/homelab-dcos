@@ -45,5 +45,5 @@ module "dcos" {
   mesos_master_ip        = "${module.mesos-master.ip}"
   mesos_agents_ips       = ["${module.mesos-agent.ip}"]
   mesos_publicagents_ips = ["${module.mesos-publicagent.ip}"]
-  datastore       = "${var.vsphere_datastore}"
+  datastore              = "${var.vsphere_datastore}"
 }
